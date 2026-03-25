@@ -1,0 +1,59 @@
+﻿import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MerchantService } from '../../services/merchant.service';
+import { PaymentService } from '../../services/payment.service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+//import { FormBuilder, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-payment-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './payment-form.component.html'
+})
+export class PaymentFormComponent {
+  merchantService = inject(MerchantService);
+  paymentService = inject(PaymentService);
+  fb = inject(FormBuilder);
+  router = inject(Router);
+
+  merchant = this.merchantService.selectedMerchant;
+
+  form = this.fb.nonNullable.group({
+    merchantId: 'merchant-a',
+    amount: 0,
+    cardNumber: '',
+    expiryMonth: 1,       // 👈 default to number
+    expiryYear: 2026,
+    cvv: '',
+    customerEmail: ''
+  });
+
+
+  onMerchantSelect(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const merchantId = selectElement.value;
+    this.merchantService.selectMerchant(merchantId);
+    this.form.patchValue({ merchantId });
+  }
+
+
+ onSubmit(): void {
+    if (this.paymentForm.invalid) return;
+    this.isSubmitting = true;
+    this.errorMessage = '';
+    this.paymentService.submitPayment(this.paymentForm.value).subscribe({
+      next: (response) => {
+        // Navigate to receipt page, passing the response as navigation state
+        this.router.navigate(['/receipt'], { state: { response, merchant: this.selectedMerchant } });
+      },
+      error: (err) => {
+        this.isSubmitting = false;
+        this.errorMessage = 'Payment failed. Please try again.';
+        console.error(err);
+      },
+    });
+  }
+  }
+}
