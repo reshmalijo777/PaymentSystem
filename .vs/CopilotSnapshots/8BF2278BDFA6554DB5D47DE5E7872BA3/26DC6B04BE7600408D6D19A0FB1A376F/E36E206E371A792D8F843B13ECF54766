@@ -1,3 +1,0 @@
-﻿export const environment = {
-  apiBaseUrl: '[localhost](https://localhost:7001/api)' // your backend API
-};

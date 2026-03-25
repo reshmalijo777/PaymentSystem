@@ -1,2 +1,0 @@
-C:\Myprojects\PaymentSystem\obj\Debug\net10.0\PaymentSystem.csproj.AssemblyReference.cache
-C:\Myprojects\PaymentSystem\obj\Debug\net10.0\rpswa.dswa.cache.json
