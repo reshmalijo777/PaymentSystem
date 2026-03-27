@@ -1,0 +1,41 @@
+<div class="payment-form-container">
+  <h2>Make a Payment</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Merchant</label>
+    <select formControlName="merchantId">
+      <option value="merchant-a">Merchant A</option>
+      <option value="merchant-b">Merchant B</option>
+    </select>
+
+    <label>Amount</label>
+    <input formControlName="amount" type="number" />
+
+    <label>Card Number</label>
+    <input formControlName="cardNumber" />
+
+    <div class="row">
+      <div>
+        <label>Expiry Month</label>
+        <input formControlName="expiryMonth" type="number" min="1" max="12" />
+      </div>
+
+      <div>
+        <label>Expiry Year</label>
+        <input formControlName="expiryYear" type="number" />
+      </div>
+
+      <div>
+        <label>CVV</label>
+        <input formControlName="cvv" type="text" />
+      </div>
+    </div>
+
+    <label>Email</label>
+    <input formControlName="customerEmail" type="email" />
+
+    <button type="submit" [disabled]="form.invalid">
+      Submit Payment
+    </button>
+  </form>
+</div>

@@ -1,0 +1,76 @@
+/* Container */
+.payment-form-container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 25px;
+  background: #f4f6f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+  /* Title */
+  .payment-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Labels */
+  .payment-form-container label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* Inputs + Select */
+  .payment-form-container input,
+  .payment-form-container select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.2s ease;
+  }
+
+    /* Focus effect */
+    .payment-form-container input:focus,
+    .payment-form-container select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+  /* Button */
+  .payment-form-container button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+    /* Button hover */
+    .payment-form-container button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Disabled button */
+    .payment-form-container button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+  .row div {
+    flex: 1;
+  }
